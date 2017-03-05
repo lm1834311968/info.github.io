@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link href="Css/main1.css" rel="stylesheet" type="text/css">
+    <script src="Script/jquery-1.9.1.min.js"type="text/javascript"></script>
+    <script src="Script/jquery.mousewheel.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+            var run=1;
+            var _hei = $(window).height();
+            var _wid = $(window).width();
+            console.log('期望薪资：8k');
+            console.log('工作地点：杭州');
+            console.log('联系我吧！！！');
+            //var rem;
+            $(window).resize(function () {
+                _wid = $(window).width();
+                if ($('.proall').scrollLeft() != 0) {
+                    $('.proall').scrollLeft(_wid);
+                }
+                $('#pageall .page4 .proall .nav1').css('left',_wid/2-50)
+            })
+           
+            //function bt() {
+            //    _hei = $(window).height();
+            //    _wid = $(window).width();
+            //    rem = _wid / 68.3;
+              
+            //    $('html').css('font-size', rem);
+            //}
+            $('#pageall>div').height(_hei);
+
+            $('nav,.head-right ul').on('click', 'li', function () {
+                $(this).addClass('add');
+                $(this).siblings().removeClass('add');
+                $('.' + $(this).attr('rel')).css('display', 'block');
+                $('.' + $(this).attr('rel')).siblings().css('display', 'none');
+                run= $(this).attr('rel').replace(/[a-zA-Z]*/,'')
+            })
+
+            $('.nav12').click(function () {
+                $(this).addClass('add');
+                $(this).siblings().removeClass('add');
+               
+                if ($('.proall').scrollLeft()==0) {
+                    $('.proall').animate({ scrollLeft: _wid }, 500)
+                }
+            });
+            $('.nav11').click(function () {
+                $(this).addClass('add');
+                $(this).siblings().removeClass('add');
+                //alert($('.proall').scrollLeft());
+                //$('.proall').scrollLeft(100);
+              
+                if ($('.proall').scrollLeft() != 0) {
+                    $('.proall').animate({ scrollLeft: 0}, 500)
+                }
+            })
+            $(window).bind('mousewheel', function (event, delta, deltaX, deltaY) {
+
+                if (window.console && console.log) {
+                    if (delta > 0) {
+                        if (run > 1) {
+                            run--;
+                        }  
+                    } else {
+                        if (run < 5) {
+                            run++;
+                        } 
+                    }
+                    $('.page' + run).css('display', 'block');
+                    $('.page' + run).siblings().css('display', 'none');
+                   
+                    $('nav ul [rel=page' + run + ']').addClass('add');
+                    $('nav ul [rel=page' + run + ']').siblings().removeClass('add');
+                }
+            });
+        })
+    </script>
+<title></title>
+</head>
+<body>
+    <div id="head">
+        <div class="head-left">
+            <img src="Image/me.jpg" />
+            <div>
+                <span>lum</span><hr />
+                <span>个人简历</span>
+            </div>
+        </div>
+        <div class="head-right">
+            <ul>
+                <li rel="page1" >首页</li>
+                <li rel="page2">我的资料</li>
+                <li rel="page3">专业技能</li>
+                <li rel="page4">项目经验</li>
+                <li rel="page5">联系我</li>
+               
+            </ul>
+        </div>
+    </div>
+    <nav>
+        <ul>
+            <li rel="page1" class="add" title="首页"></li>
+            <li rel="page2"title="我的资料"></li>
+            <li rel="page3" title="专业技能"></li>
+            <li rel="page4"title="项目经验"></li>
+            <li rel="page5" title="联系我"></li>
+           
+        </ul>
+    </nav>
+    <div id="pageall">
+        <div class="page1">
+            <h1>天生我材必有用</h1>
+            <p>每一次从无到有的成就感</p>
+            <p>一个充满理想和热血的青年</p>
+            <p>一颗在前端路上坚持不懈的心</p>
+            
+           
+        </div>
+        <div class="page2">
+            <h1>我的资料</h1>
+            <div class="info">
+                <img src="Image/me.jpg" />
+                <p>姓名：卢敏</p>
+                <p>年龄：24</p>
+                <p>职位：Web前端开发</p>
+                <p>学历：本科</p>
+                <p>工作经验：1.5年</p>
+                <p>毕业学校：丽水学院</p>
+                <p>专业：电子信息工程</p>
+                <p>毕业时间：2015年</p>
+            </div>
+        </div>
+        <div class="page3">
+            <p class="xz"></p>
+            <h2>专业技能</h2>
+            <div class="sk">
+                <div class="ski1">
+                    <h3>HTML</h3>
+                    <ul>
+                        <li>深刻理解Web标准</li>
+                        <li>熟练掌握各类布局方式，能够根据设计图实现页面布局和交互效果</li>
+                        <li>了解html5新属性</li>
+
+                    </ul>
+                </div>
+                <div class="ski2">
+                    <h3>CSS</h3>
+                    <ul>
+                        <li>熟练运用css进行样式设计，了解css标准，能够解决常见浏览器兼容性问题</li>
+                        <li>熟悉css3新属性</li>
+                        <li>掌握响应式布局，了解BootStrap框架布局</li>
+                    </ul>
+                </div>
+                <div class="ski3">
+                    <h3>JavaScript</h3>
+                    <ul>
+                        <li>熟悉JavaScript语言特性，对闭包，作用域和面向对象的编程思想有一定程度的了解</li>
+                        <li>熟练掌握jQuery,能使用jQuery进行各种交互实现和特效的制作</li>
+
+                    </ul>
+                </div>
+                <div class="ski4">
+                    <h3>Skill</h3>
+                    <ul>
+                        <li>熟练firebug，chrome等调试工具进行代码调试</li>
+                        <li>熟练使用vs，sublime，ps等前端工具进行页面开发</li>
+                        <li>对于MVC开发模式有一定程度的了解</li>
+                        <li>正在深入学习vue.js</li>
+                        <li>能使用sql进行增删改查的实现</li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        <div class="page4">
+            <h2>项目经验</h2>
+            <div class="proall">
+                <div class="po">
+                    <div class="po1">
+                        <div class="pro1">
+                            <p>项目名称：<span>杭州环境集成分析平台</span></p>
+                            <p>项目描述：<span>本项目是协助杭州环境监测中心进行采集数据的质量控制、数据统计展示以及仪器设备的运行状况的系统平台</span></p>
+                            <p>工作内容：<span>此项目是G20项目，由我们开发部中的三个人进行开发，我负责数据图表展示模块、数据查询、值班管理等模块的制作，在G20前完成的AQI竖屏展示页面在杭州气象局内部展示，运行，G20结束后收到杭州气象局的通报表彰。</span></p>
+                            
+                            
+                        </div>
+                        <div class="pro2">
+                            <p>项目名称：<span>杭州防雷重点单位</span></p>
+                            <p>项目描述：<span>本项目是协助气象单位完成雷电灾害上报工作，历史雷电资料查询，防雷资料下发等功能。</span></p>
+                            <p>工作内容：<span>此项目是以填写上报为重点的项目，在项目中我完成了上报页面的制作，动态的通过后台数据来生成前端页面，待用户填写完成后将数据提交给后台处理。在项目中通过后台人员沟通更加深刻的理解web前台和后台之间的联系，并且通过项目学到了sql语句的使用。</span></p>
+                          
+                        </div>
+                    </div>
+                  <div class="po2">
+                      <div class="pro3">
+                          <p>项目名称：<span>杭州历史天气查询系统</span></p>
+                          <p>项目描述：<span>本项目主要是根据查询条件，从历史天气数据库中查出相应数据，生成数据表格展示和图表展示。</span></p>
+                          <p>工作内容：<span>此项目是动态的和用户进行交互为主要功能的项目，通过用户的选择来进行不同的数据展示，我在项目中完成了大气污染物要素的查询模块，通过表格和图表的形式进行展示，并提供打印功能。在项目中考虑用户的选择和用户的便利来进行交互，并成功展示，对于用户的交互有了更加深入的理解。</span></p>
+                          
+                      </div>
+                      <div class="pro4">
+                          <p>项目名称：<span>开化水利管理系统</span></p>
+                          <p>项目描述：<span>本项目是协助开化水利管理部门来管理水库大坝等等地区的巡查情况和巡查人员上报资料的查看。</span></p>
+                          <p>工作内容：<span>此项目中我主要负责了登录页的搭建和首页的框架搭建，使用到了rem来制作响应式布局。</span></p>
+     
+                      </div>   
+                  </div>
+                                  
+                </div>
+                <ul class="nav1">
+                    <li class="nav11 add" ></li>
+                    <li class="nav12"></li>
+                </ul>
+            </div>
+        </div>
+        <div class="page5">
+            <h2>联系我</h2>
+            <div class="phone">
+                <img  src="Image/wx.png"/>
+                <div class="info">
+                    <p>电话：15880269312</p>
+                    <p>邮箱：15880269312@139.com</p>
+                    <p>Q&nbsp;&nbsp;Q: 1834311968</p>
+                    <p>微信：1834311968</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
